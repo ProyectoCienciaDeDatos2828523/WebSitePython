@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rueda de la Vida</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="../css/evaluacion.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar">
         <div class="logo">
             <img src="../images/logo.png" alt="Kwan Psychology">
-            <p>Kwan <br>Psychology</p>
+            <p class="logito">Kwan <br>Psychology</p>
         </div>
         <div class="nav-links">
             <a href="index.html">Inicio</a>
@@ -21,52 +22,81 @@
         </div>
         <a href="#" class="btn-signup">Donaciones</a>
     </nav>
-    <div class="container d-flex justify-content-center align-items-center vh-100">
-        <div class="col-md-8">
-            <div class="card">
-                <h2 class="text-center mb-4 text-primary">Rueda de la Vida</h2>
-                <p class="text-center text-muted">Evalúa cada aspecto de tu vida del 1 al 10</p>
-                <form>
-                    <div class="mb-3">
-                        <label class="form-label">Salud</label>
-                        <input type="number" class="form-control" min="1" max="10" placeholder="Puntuación (1-10)">
+    <div class="container life-wheel-container">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="mb-0">Rueda de la Vida</h2>
+                <p class="text-white-50 mb-0">Evalúa cada aspecto de tu vida del 1 al 10</p>
+            </div>
+            <div class="card-body p-5">
+                <form id="lifeWheelForm">
+                    <div class="form-row">
+                        <label class="form-label" for="health">Salud</label>
+                        <input type="text" class="form-control" id="health" placeholder="1-10">
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Desarrollo Personal</label>
-                        <input type="number" class="form-control" min="1" max="10" placeholder="Puntuación (1-10)">
+                    <div class="form-row">
+                        <label class="form-label" for="personalDev">Desarrollo Personal</label>
+                        <input type="text" class="form-control" id="personalDev" placeholder="1-10">
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Hogar</label>
-                        <input type="number" class="form-control" min="1" max="10" placeholder="Puntuación (1-10)">
+                    <div class="form-row">
+                        <label class="form-label" for="home">Hogar</label>
+                        <input type="text" class="form-control" id="home" placeholder="1-10">
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Familia y Amigos</label>
-                        <input type="number" class="form-control" min="1" max="10" placeholder="Puntuación (1-10)">
+                    <div class="form-row">
+                        <label class="form-label" for="relationships">Familia y Amigos</label>
+                        <input type="text" class="form-control" id="relationships" placeholder="1-10">
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Amor</label>
-                        <input type="number" class="form-control" min="1" max="10" placeholder="Puntuación (1-10)">
+                    <div class="form-row">
+                        <label class="form-label" for="love">Amor</label>
+                        <input type="text" class="form-control" id="love" placeholder="1-10">
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Ocio</label>
-                        <input type="number" class="form-control" min="1" max="10" placeholder="Puntuación (1-10)">
+                    <div class="form-row">
+                        <label class="form-label" for="leisure">Ocio</label>
+                        <input type="text" class="form-control" id="leisure" placeholder="1-10">
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Trabajo</label>
-                        <input type="number" class="form-control" min="1" max="10" placeholder="Puntuación (1-10)">
+                    <div class="form-row">
+                        <label class="form-label" for="work">Trabajo</label>
+                        <input type="text" class="form-control" id="work" placeholder="1-10">
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Dinero</label>
-                        <input type="number" class="form-control" min="1" max="10" placeholder="Puntuación (1-10)">
+                    <div class="form-row">
+                        <label class="form-label" for="money">Dinero</label>
+                        <input type="text" class="form-control" id="money" placeholder="1-10">
                     </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-custom w-100">Enviar</button>
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-custom w-100">Evaluar mi Rueda de la Vida</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('lifeWheelForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = {
+                health: document.getElementById('health').value,
+                personalDev: document.getElementById('personalDev').value,
+                home: document.getElementById('home').value,
+                relationships: document.getElementById('relationships').value,
+                love: document.getElementById('love').value,
+                leisure: document.getElementById('leisure').value,
+                work: document.getElementById('work').value,
+                money: document.getElementById('money').value
+            };
+            
+            // Validate that all inputs are between 1-10
+            const isValid = Object.values(formData).every(val => 
+                /^([1-9]|10)$/.test(val)
+            );
+            
+            if (isValid) {
+                alert('Datos guardados. Tu Rueda de la Vida ha sido evaluada.');
+                console.log(formData);
+            } else {
+                alert('Por favor, ingresa valores entre 1 y 10 en todos los campos.');
+            }
+        });
+    </script>
 </body>
 </html>
